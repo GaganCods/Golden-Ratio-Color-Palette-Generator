@@ -1,61 +1,20 @@
-# 🎨 Golden Ratio Color Palette Generator
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
 
-A modern, mobile-first web application that helps designers and developers generate beautiful, harmonious color palettes using Golden Ratio color theory and golden-angle hue shifts.
+# Run and deploy your AI Studio app
 
-It includes accessibility analysis, smart palette controls, and developer-friendly export tools — all wrapped in a clean, distraction-free UI.
+This contains everything you need to run your app locally.
 
----
+View your app in AI Studio: https://ai.studio/apps/drive/1dp06w78QhPEl7gyrRhnT5EcZoCGhFtG5
 
-## ✨ Features
+## Run Locally
 
-### 🎯 Palette Generation
-- Pick a main color using HEX input, sliders, or color picker
-- Generate 5–9 harmonious colors using Golden Ratio logic
-- Lock colors and regenerate others
-- Shuffle palette variations
-- Rename and tag colors
+**Prerequisites:**  Node.js
 
-### ♿ Accessibility Tools
-- WCAG AA / AAA contrast scores
-- Black / white text recommendations
-- Low-contrast warnings
-- Color-blindness simulators
-- Text preview cards
 
-### ⚡ Productivity Boosters
-- Drag to reorder colors
-- Copy HEX / RGB / HSL instantly
-- Batch-copy full palette
-- Generate shades & tints
-- Gradient builder
-- Side-by-side palette comparison
-
-### 📤 Export Options
-- PNG export (1× / 2× / 4× resolution)
-- CSS variables
-- Tailwind config snippet
-- JSON format
-- SVG palette sheet
-- Shareable links
-
----
-
-## 🖥️ UI / UX Principles
-
-- Mobile-first responsive layout
-- Minimal white interface
-- Large touch-friendly controls
-- Subtle animations & micro-interactions
-- Sticky toolbars for mobile
-- Keyboard accessible on desktop
-- Clean design-system layout
-
----
-
-## 🚀 Getting Started
-
-### Clone the repository
-
-```bash
-git clone https://github.com/GaganCods/golden-ratio-color-palette-generator.git
-cd golden-ratio-color-palette-generator
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
