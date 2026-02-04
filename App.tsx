@@ -32,21 +32,28 @@ const DEFAULTS: Settings = {
 };
 
 // Official Brand Icon
-  <div className="flex items-center gap-3">
-  <img
-    src="/3d-fav.png"
-    alt="GoldenHue logo"
-    className="h-8 w-8 object-contain"
+const GoldenHueLogo = ({ className = "w-8 h-8" }: { className?: string }) => (
+  <img 
+    src="3d-fav.png" 
+    alt="GoldenHue Logo" 
+    className={`object-contain select-none ${className}`} 
   />
+);
 
-  <div className="leading-tight">
-    <div className="font-semibold text-sm">GoldenHue</div>
-    <div className="text-xs text-gray-500">
-      Perfect Color Harmony
+// Reusable Brand Header Component
+const BrandHeader = ({ className = "" }: { className?: string }) => (
+  <div className={`flex items-center gap-3.5 ${className}`}>
+    <GoldenHueLogo className="w-10 h-10 md:w-11 md:h-11 shrink-0" />
+    <div className="flex flex-col justify-center">
+      <span className="font-bold text-slate-900 text-lg md:text-xl leading-none tracking-tight">
+        GoldenHue
+      </span>
+      <span className="text-xs md:text-sm text-slate-500 font-medium leading-none mt-1.5 tracking-wide">
+        Perfect Color Harmony
+      </span>
     </div>
   </div>
-</div>
-
+);
 
 const App: React.FC = () => {
   // State
