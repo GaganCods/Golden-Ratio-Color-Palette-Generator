@@ -6,7 +6,7 @@ GoldenHue is a modern, mobile-first web app that generates visually balanced col
 
 ---
 
-![GoldenHue Logo](public/3d-fav.png)
+![GoldenHue Logo](public/goldenhue-logo.png)
 
 ---
 
