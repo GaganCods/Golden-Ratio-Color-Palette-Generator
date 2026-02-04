@@ -21,7 +21,8 @@ import {
   ArrowRightLeft,
   Download,
   CheckCircle2,
-  Share2
+  Share2,
+  Eye
 } from 'lucide-react';
 
 const DEFAULTS: Settings = {
@@ -335,7 +336,7 @@ const App: React.FC = () => {
       <main className="flex-1 relative flex flex-col h-[calc(100vh-80px)] md:h-screen p-4 md:p-8 overflow-y-auto overflow-x-hidden bg-gray-50/50 pb-24 md:pb-8">
         
         {/* Main Picker Section */}
-        <div className="max-w-6xl mx-auto w-full mb-8 transition-all duration-500 ease-in-out">
+        <div className="max-w-6xl mx-auto w-full mb-8 transition-all duration-500 ease-in-out shrink-0">
             <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 p-6 md:p-8 flex flex-col md:flex-row gap-8 items-center border border-slate-100">
                 
                 {/* Input Group */}
@@ -454,12 +455,13 @@ const App: React.FC = () => {
         </div>
 
         {/* Desktop Brand Header / Navbar (Top of Main) */}
-        <div className="hidden md:flex justify-between items-center mb-6 max-w-6xl mx-auto w-full">
+        <div className="hidden md:flex justify-between items-center mb-6 max-w-6xl mx-auto w-full shrink-0">
             <BrandHeader />
         </div>
 
         {/* Palette Display */}
-        <div className="flex-1 w-full max-w-6xl mx-auto flex flex-col justify-center min-h-[300px]">
+        {/* Added shrink-0 and removed justified-center constraints to prevent layout squashing */}
+        <div className="w-full max-w-6xl mx-auto flex-1 flex flex-col min-h-min shrink-0 mb-8">
              {loading ? (
                  <div className="w-full h-96 flex items-center justify-center animate-pulse">
                      <div className="flex flex-col items-center gap-4">
@@ -480,24 +482,35 @@ const App: React.FC = () => {
              )}
         </div>
 
-        {/* Preview Section Mini (Bottom) */}
+        {/* Preview Section Container */}
+        {/* Wrapped in a separate container div to ensure spacing and prevent overlap */}
         {!loading && (
-             <div className="mt-12 hidden md:grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl mx-auto w-full pb-8">
-                <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-6">
-                     <div className="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold shadow-md ring-2 ring-white shrink-0" style={{ backgroundColor: colors[0]?.hex }}>AB</div>
-                     <div className="min-w-0">
-                         <h4 className="font-bold text-slate-800 text-lg">Heading Text</h4>
-                         <p className="text-slate-500 truncate">Body text appears like this.</p>
-                     </div>
-                     <button className="ml-auto px-6 py-2.5 rounded-lg text-sm font-bold text-white shadow-lg transition-transform hover:scale-105 active:scale-95 shrink-0" style={{ backgroundColor: colors[1]?.hex || '#000' }}>
-                        Button
-                     </button>
-                </div>
-                <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center h-28 relative overflow-hidden group">
-                     <div className="absolute inset-0" style={{ background: `linear-gradient(to right, ${colors[0]?.hex}, ${colors[1]?.hex}, ${colors[2]?.hex || colors[1]?.hex})` }}></div>
-                    <span className="text-white font-medium mix-blend-overlay z-10 text-lg">Gradient Preview</span>
-                </div>
-             </div>
+             <section className="mt-auto hidden md:block max-w-6xl mx-auto w-full pb-8">
+                 <div className="flex items-center gap-2 mb-4 text-slate-400 text-sm font-bold uppercase tracking-wider px-2">
+                    <Eye className="w-4 h-4" />
+                    <span>Quick Preview</span>
+                 </div>
+                 
+                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    {/* UI Preview Card */}
+                    <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-6 overflow-hidden">
+                        <div className="w-14 h-14 rounded-full flex items-center justify-center text-white font-bold shadow-md ring-2 ring-white shrink-0" style={{ backgroundColor: colors[0]?.hex }}>AB</div>
+                        <div className="min-w-0 flex-1">
+                            <h4 className="font-bold text-slate-800 text-lg truncate">Heading Text</h4>
+                            <p className="text-slate-500 truncate">Body text appears like this.</p>
+                        </div>
+                        <button className="ml-auto px-6 py-2.5 rounded-lg text-sm font-bold text-white shadow-lg transition-transform hover:scale-105 active:scale-95 shrink-0" style={{ backgroundColor: colors[1]?.hex || '#000' }}>
+                            Button
+                        </button>
+                    </div>
+
+                    {/* Gradient Preview Card */}
+                    <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center h-28 relative overflow-hidden group">
+                        <div className="absolute inset-0" style={{ background: `linear-gradient(to right, ${colors[0]?.hex}, ${colors[1]?.hex}, ${colors[2]?.hex || colors[1]?.hex})` }}></div>
+                        <span className="text-white font-medium mix-blend-overlay z-10 text-lg">Gradient Preview</span>
+                    </div>
+                 </div>
+             </section>
         )}
 
       </main>

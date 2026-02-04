@@ -129,7 +129,7 @@ export const Palette: React.FC<PaletteProps> = ({ colors, onLockToggle, onUpdate
   };
 
   return (
-    <div className="w-full h-full flex flex-col md:flex-row shadow-xl rounded-2xl md:rounded-3xl transition-all duration-500">
+    <div className="w-full flex flex-col md:flex-row shadow-xl rounded-2xl md:rounded-3xl transition-all duration-500">
       {colors.map((color, index) => (
         <ColorCard 
           key={color.id} 
